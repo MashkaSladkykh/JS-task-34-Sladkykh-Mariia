@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <table class="table">
+
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        let users;
+
+        $.ajax({
+                method: "GET",
+                url: "https://jsonplaceholder.typicode.com/users",
+            })
+
+            .done(function (data) {
+                users = data;
+                renderUsers(data)
+            })
+
+        function renderUsers(users) {
+            const $table = $('.table');
+            $table.append(`
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Website</th>
+            </tr>
+        `);
+
+            $(users).each(function () {
+                const {
+                    id,
+                    name,
+                    username,
+                    email,
+                    phone,
+                    website,
+                } = this;
+                $table.append(`
+                <tr>
+                    <td>${id}</td>
+                    <td>${name}</td>
+                    <td>${username}</td>
+                    <td>${email}</td>
+                    <td>${phone}</td>
+                    <td>${website}</td>
+                </tr>`)
+            })
+
+
+        }
+    </script>
+
+</body>
+
+</html>

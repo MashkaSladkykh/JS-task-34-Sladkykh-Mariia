@@ -1,0 +1,19 @@
+body{
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 760px;
+    text-align: center;
+}
+
+
+
+table, th, td {
+    border: 1px solid;
+  }
+
+table {
+    margin-top: 10px;
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+  }
